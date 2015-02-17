@@ -1,2 +1,18 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
+<!-- <h1>Tasks#index</h1>
+<p>Find me in app/views/tasks/index.html.erb</p> -->
+
+
+<%= link_to "Add new Task", new_task_path %>
+
+<% @tasks.each do |task| %>
+  <div>
+    <h2><%= task.name %></h2>
+    <div id="buttons">
+      <%= link_to "Show details", task_path(task.id) %>
+
+      <%= link_to "Edit", edit_task_path(task.id) %>
+
+      <%= link_to "Delete me", task_path(task.id), method: :delete, data: { confirm: "Are you sure?" }%>
+    </div>
+  </div>
+<% end %>
